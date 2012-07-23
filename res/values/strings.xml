@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Merch-Mobile</string>
+    <string name="startup_message">Starting Merch-Mobile</string>
+    <string name="add_item_hint">Add Item</string>
+    <string name="error_dialog_title">Couchbase Error</string>
+    <string name="error_dialog_button">Exit</string>
+</resources>
