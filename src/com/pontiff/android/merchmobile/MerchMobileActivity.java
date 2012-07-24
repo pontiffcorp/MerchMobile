@@ -1,6 +1,7 @@
 package com.pontiff.android.merchmobile;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +21,7 @@ import org.ektorp.impl.StdCouchDbInstance;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -27,15 +29,21 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnKeyListener;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Gallery;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.couchbase.touchdb.TDDatabase;
 import com.couchbase.touchdb.TDServer;
@@ -72,6 +80,8 @@ public class MerchMobileActivity extends Activity implements OnItemClickListener
 	protected ReplicationCommand pushReplicationCommand;
 	protected ReplicationCommand pullReplicationCommand;
 
+	public Context ctx;
+	
     //static inializer to ensure that touchdb:// URLs are handled properly
     {
         TDURLStreamHandlerFactory.registerSelfIgnoreError();
@@ -80,8 +90,30 @@ public class MerchMobileActivity extends Activity implements OnItemClickListener
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.main);
+        
+        
+        //setContentView(R.layout.main);
+        ctx = this;
+		startTouchDB();
+        startEktorp();
 
+        
+        setContentView(R.layout.mainview);
+       //Find the gallery view and set the adapter for it
+         
+         
+      
+    
+    
+    
+    
+    }
+   
+      //The new custom Gallery Adapter for our new layout
+           
+        
+        
+        /*
         //connect items from layout
         addItemEditText = (EditText)findViewById(R.id.addItemEditText);
         itemListView = (ListView)findViewById(R.id.itemListView);
@@ -93,7 +125,7 @@ public class MerchMobileActivity extends Activity implements OnItemClickListener
         startEktorp();
 
         
-        TDDatabase dBase = server.getDatabaseNamed(DATABASE_NAME);
+/*        TDDatabase dBase = server.getDatabaseNamed(DATABASE_NAME);
         
         TDView viewAll = dBase.getViewNamed(String.format("%s/%s", "dataBase", "allData"));
 	    viewAll.setMapReduceBlocks(new TDViewMapBlock() {
@@ -120,10 +152,9 @@ public class MerchMobileActivity extends Activity implements OnItemClickListener
 	    }
 		
 	    
+  */  
     
     
-    
-    }
 
 	protected void onDestroy() {
 		Log.v(TAG, "onDestroy");
@@ -189,11 +220,34 @@ public class MerchMobileActivity extends Activity implements OnItemClickListener
 			protected void onSuccess() {
 				//attach list adapter to the list and handle clicks
 				ViewQuery viewQuery = new ViewQuery().designDocId(dDocId).viewName(viewName).descending(true);
-				itemListViewAdapter = new MerchMobileListAdapter(MerchMobileActivity.this, couchDbConnector, viewQuery);
-				itemListView.setAdapter(itemListViewAdapter);
-				itemListView.setOnItemClickListener(MerchMobileActivity.this);
-				itemListView.setOnItemLongClickListener(MerchMobileActivity.this);
 
+		                
+				ViewResult result = couchDbConnector.queryView(viewQuery);
+		        Gallery gallery = (Gallery) findViewById(R.id.gallery);
+		        
+		        List<String> rowVals = new ArrayList<String>();
+		        String item;
+		        
+		        for (Row row : result.getRows()) {
+		        	
+		        	item = row.getValueAsNode().get("store_name").getTextValue();
+		        	if (item != null) rowVals.add(item);
+
+		        }
+	
+		        
+				gallery.setAdapter(new MerchMobileGalleryAdapter(ctx, rowVals));
+		
+			
+				
+				
+				//				itemListViewAdapter = new MerchMobileListAdapter(MerchMobileActivity.this, couchDbConnector, viewQuery);
+//				itemListView.setAdapter(itemListViewAdapter);
+//				itemListView.setOnItemClickListener(MerchMobileActivity.this);
+//				itemListView.setOnItemLongClickListener(MerchMobileActivity.this);
+
+
+				
 				startReplications();
 			}
 		};
@@ -302,7 +356,7 @@ public class MerchMobileActivity extends Activity implements OnItemClickListener
 	 * Add settings item to the menu
 	 */
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add(Menu.NONE, 0, 0, "Settings");
+        menu.add(Menu.NONE, 0, 0, "Select Store");
         return super.onCreateOptionsMenu(menu);
     }
 
