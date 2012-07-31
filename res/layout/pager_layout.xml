@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+  <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+        android:layout_width="fill_parent"
+        android:layout_height="0px"
+        android:layout_weight="1">
+ 
+ 	<ScrollView
+		android:layout_width="fill_parent"
+		android:id="@+id/page_view"
+        android:layout_height="fill_parent"
+        android:background="@android:color/white" >
+
+
+		<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			
+    		android:layout_width="fill_parent"
+    		android:layout_height="fill_parent"
+    		android:id="@+id/table_view" 
+    		android:stretchColumns="0"  
+       		android:shrinkColumns="0"> 
+       		
+    	<TableRow 
+    		android:background="@android:color/black" 
+    		android:layout_margin="0dip">
+        
+    		<TextView 
+    			android:text="NCD"   
+    			android:layout_width="75dip"
+    			android:gravity="center"
+        		android:background="@android:color/white" 
+        		android:layout_margin="1dip"/>
+
+    		<TextView 
+    			android:text="CNT"     
+    			android:layout_width="30dip"
+    			android:gravity="center"
+        		android:background="@android:color/white" 
+        		android:layout_margin="1dip"/>
+        
+    		<TextView 
+    			android:text="Size"    
+    			android:layout_width="60dip"
+    			android:gravity="center"
+        		android:background="@android:color/white" 
+        		android:layout_margin="1dip"/>
+        
+    		<TextView 
+    			android:text="P"  
+    			android:layout_width="30dip" 
+        		android:background="@android:color/white" 
+        		android:gravity="center"
+        		android:layout_margin="1dip"/>
+        
+    		<TextView 
+    			android:text="R"   
+        		android:background="@android:color/white"
+        		android:gravity="center"
+        		android:layout_width="15dip" 
+        		android:layout_margin="1dip"/>
+        
+    		<TextView 
+    			android:text="Ndd"   
+    			android:layout_width="30dip"
+    			android:gravity="center"
+        		android:background="@android:color/white" 
+        		android:layout_margin="1dip"/>
+        
+    		<TextView 
+    			android:text="Avl"  
+    			android:layout_width="30dip"
+    			android:gravity="center"
+        		android:background="@android:color/white" 
+        		android:layout_margin="1dip"/>        
+
+		</TableRow>
+ 	</TableLayout>
+  </ScrollView> 
+ </LinearLayout>
+  
+  
+  
+  
+  
+  

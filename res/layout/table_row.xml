@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/TableRow"
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:orientation="horizontal"
+  android:layout_alignParentTop="true"
+  android:layout_alignParentLeft="true"
+  android:background="@android:color/black" 
+  android:layout_margin="1dip"
+  >
+
+        
+    		<TextView 
+    			android:text="XXXXX"   
+    			android:layout_width="75dip"
+    			android:gravity="left"
+        		android:background="#0000ff" 
+        		android:layout_margin="1dip"/>
+
+    		<TextView 
+    			android:text="XXX"     
+    			android:layout_width="30dip"
+    			android:gravity="center"
+        		android:background="#0000ff" 
+        		android:layout_margin="1dip"/>
+        
+    		<TextView 
+    			android:text="XXXXXX"    
+    			android:layout_width="60dip"
+    			android:gravity="center"
+        		android:background="#0000ff" 
+        		android:layout_margin="1dip"/>
+        
+    		<TextView 
+    			android:text="XX"  
+    			android:layout_width="30dip" 
+        		android:background="#0000ff" 
+        		android:gravity="center"
+        		android:layout_margin="1dip"/>
+        
+    		<TextView 
+    			android:text="X"   
+        		android:background="#0000ff"
+        		android:gravity="center"
+        		android:layout_width="15dip" 
+        		android:layout_margin="1dip"/>
+        
+    		<TextView 
+    			android:text="XXX"   
+    			android:layout_width="30dip"
+    			android:gravity="center"
+        		android:background="#0000ff" 
+        		android:layout_margin="1dip"/>
+        
+    		<TextView 
+    			android:text="XXX"  
+    			android:layout_width="30dip"
+    			android:gravity="center"
+        		android:background="#0000ff" 
+        		android:layout_margin="1dip"/>        
+
+</TableRow>
+
+

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white" >   
+
+ <HorizontalScrollView android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+		android:fadingEdge="none"
+        android:id="@+id/hsScroll_menu"
+        android:layout_alignParentTop="true"
+		android:scrollbars="none">
+        
+        <LinearLayout android:layout_height="wrap_content"
+            android:layout_width="fill_parent" 
+            android:id="@+id/menu_group" 
+            android:orientation="horizontal">
+        </LinearLayout>
+        
+ </HorizontalScrollView>
+
+
+
+
+ <com.pontiff.android.merchmobile.HorizontalPager
+        android:id="@+id/horizontal_pager"
+        android:layout_width="fill_parent"
+        android:layout_height="0px"
+        android:layout_weight="1">
+ 
+ 
+ </com.pontiff.android.merchmobile.HorizontalPager>
+
+</LinearLayout>
+
