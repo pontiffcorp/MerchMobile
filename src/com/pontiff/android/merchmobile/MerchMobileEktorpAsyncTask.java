@@ -9,7 +9,7 @@ public abstract class MerchMobileEktorpAsyncTask extends EktorpAsyncTask {
 
 	@Override
 	protected void onDbAccessException(DbAccessException dbAccessException) {
-		Log.e(MerchMobileActivity.TAG, "DbAccessException in background", dbAccessException);
+		Log.e("MM", "DbAccessException in background", dbAccessException);
 	}
 
 }

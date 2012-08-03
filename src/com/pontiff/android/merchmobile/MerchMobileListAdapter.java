@@ -18,9 +18,9 @@ import android.widget.TextView;
 
 public class MerchMobileListAdapter extends CouchbaseViewListAdapter {
 
-	protected MerchMobileActivity parent;
+	protected MmActivity parent;
 
-	public MerchMobileListAdapter(MerchMobileActivity parent, CouchDbConnector couchDbConnector, ViewQuery viewQuery) {
+	public MerchMobileListAdapter(MmActivity parent, CouchDbConnector couchDbConnector, ViewQuery viewQuery) {
 		super(couchDbConnector, viewQuery, true);
 		this.parent = parent;
 	}
